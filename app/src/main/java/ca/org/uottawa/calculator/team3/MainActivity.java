@@ -32,47 +32,47 @@ public class MainActivity extends Activity {
         TextView curText = (TextView)findViewById(R.id.resultText);
 
         switch (pressID) {
-            case R.is.button00:
+            case R.is.btn00:
                 curText.setText(curText.getText() + "0");
                 break;
 
-            case R.is.button01:
+            case R.is.btn01:
                 curText.setText(curText.getText() + "1");
                 break;
 
-            case R.is.button02:
+            case R.is.btn02:
                 curText.setText(curText.getText() + "2");
                 break;
 
-            case R.is.button03:
+            case R.is.btn03:
                 curText.setText(curText.getText() + "3");
                 break;
 
-            case R.is.button04:
+            case R.is.btn04:
                 curText.setText(curText.getText() + "4");
                 break;
 
-            case R.is.button05:
+            case R.is.btn05:
                 curText.setText(curText.getText() + "5");
                 break;
 
-            case R.is.button06:
+            case R.is.btn06:
                 curText.setText(curText.getText() + "6");
                 break;
 
-            case R.is.button07:
+            case R.is.btn07:
                 curText.setText(curText.getText() + "7");
                 break;
 
-            case R.is.button08:
+            case R.is.btn08:
                 curText.setText(curText.getText() + "8");
                 break;
 
-            case R.is.button09:
+            case R.is.btn09:
                 curText.setText(curText.getText() + "9");
                 break;
 
-            case R.is.buttonDot:
+            case R.is.btnDot:
                 curText.setText(curText.getText() + ".");
                 break;
             default:
@@ -121,7 +121,6 @@ public class MainActivity extends Activity {
     }
 
     public void btnResultClick(View view) {
-
         if (optr != Operator.none) {
             EditText eText = (EditText)findViewById(R.id.resultEdit);
             data2 = Double.parseDouble(eText.getText().toString());
