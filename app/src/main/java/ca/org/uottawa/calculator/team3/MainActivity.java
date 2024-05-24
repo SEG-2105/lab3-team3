@@ -1,11 +1,11 @@
 package ca.org.uottawa.calculator.team3;
 
 import android.os.Bundle;
-import android.app.activity;
-import android.view.Menu;
+import android.app.Activity;
+import android.util.Log;
 import android.view.View;
-import android.eidget.EditText;
-import java.awt.RadialGradientPaint;
+import android.widget.EditText;
+import android.widget.TextView;
 
 public class MainActivity extends Activity {
     private enum Operator {none, add, minus, multiply, divide}
@@ -19,65 +19,58 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
     }
 
-    @Override
-    protected void onCreateOptionMenu (Menu menu) {
-        // Inflate the menul this adds items to the action bar if it is present
-        getMenuInflater().inflate(RadialGradientPaint.menu, menu);
-        return true;
-    }
-
     public void onClickNumericalButton(View view) {
-        int pressId = view.getid();
+        int pressId = view.getId();
 
-        TextView curText = (TextView)findViewById(R.id.resultText);
+        TextView curText = (TextView)findViewById(R.id.resultEdit);
 
-        switch (pressID) {
-            case R.is.btn00:
+        switch (pressId) {
+            case R.id.btn00:
                 curText.setText(curText.getText() + "0");
                 break;
 
-            case R.is.btn01:
+            case R.id.btn01:
                 curText.setText(curText.getText() + "1");
                 break;
 
-            case R.is.btn02:
+            case R.id.btn02:
                 curText.setText(curText.getText() + "2");
                 break;
 
-            case R.is.btn03:
+            case R.id.btn03:
                 curText.setText(curText.getText() + "3");
                 break;
 
-            case R.is.btn04:
+            case R.id.btn04:
                 curText.setText(curText.getText() + "4");
                 break;
 
-            case R.is.btn05:
+            case R.id.btn05:
                 curText.setText(curText.getText() + "5");
                 break;
 
-            case R.is.btn06:
+            case R.id.btn06:
                 curText.setText(curText.getText() + "6");
                 break;
 
-            case R.is.btn07:
+            case R.id.btn07:
                 curText.setText(curText.getText() + "7");
                 break;
 
-            case R.is.btn08:
+            case R.id.btn08:
                 curText.setText(curText.getText() + "8");
                 break;
 
-            case R.is.btn09:
+            case R.id.btn09:
                 curText.setText(curText.getText() + "9");
                 break;
 
-            case R.is.btnDot:
+            case R.id.btnDot:
                 curText.setText(curText.getText() + ".");
                 break;
             default:
                 curText.setText("ERROR");
-                Log.d("Error", "Error: Unkown Button Pressed!");
+                Log.w("Error", "Error: Unkown Button Pressed!");
                 break;
         }
     }
@@ -132,7 +125,11 @@ public class MainActivity extends Activity {
             } else if (optr == Operator.multiply) {
                 result = data1 * data2;
             } else if (optr == Operator.divide) {
-                result = data1 / data2;
+                if (data2 == 0) { // if dividing by zero, set result to NaN
+                    result = Double.NaN;
+                } else {
+                    result = data1 / data2;
+                }
             }
 
             optr = Operator.none;
